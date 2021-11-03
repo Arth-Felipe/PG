@@ -27,7 +27,6 @@ const esferaMaterial = new THREE.MeshBasicMaterial( { color: 0x5589f2 } );
 const esfera = new THREE.Mesh( esferaGeometry, esferaMaterial );
 scene.add( esfera );
 
-
 // translação do objeto
 piramide.translateX(40);
 esfera.translateX(23);
@@ -39,20 +38,6 @@ esfera.scale.set(1.5, 1.5, 1.5);
 // rotação do objeto
 piramide.rotation.set(0, 1, 1);
 esfera.rotation.set(0, 1, 1);
-
-
-
-// Adição de luz à cena
-var light = new THREE.PointLight(0xFFFFFF);
-light.position.set(-10, 15, 50);
-scene.add(light);
-
-// Função de animação do objeto
-function animate() {
-	requestAnimationFrame( animate );
-	renderer.render( scene, camera );
-}
-animate();
 
 // Criando objeto Lathe
 const points = [];
@@ -76,3 +61,15 @@ lathe.translateZ(25);
 lathe.scale.set(1.5, 2, 1);
 // rotação do objeto lathe
 lathe.rotation.set(0, 1.2, 1);
+
+// Adição de luz à cena
+var light = new THREE.PointLight(0xFFFFFF);
+light.position.set(-10, 15, 50);
+scene.add(light);
+
+// Função de animação do objeto
+function animate() {
+	requestAnimationFrame( animate );
+	renderer.render( scene, camera );
+}
+animate();
