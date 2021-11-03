@@ -20,12 +20,27 @@ const piramideGeometry = new THREE.TetrahedronGeometry();
 const piramideMaterial = new THREE.MeshPhongMaterial( { color: 0x993399 } );
 const piramide = new THREE.Mesh( piramideGeometry, piramideMaterial );
 scene.add( piramide );
+
+//Criando o objeto círculo
+const esferaGeometry = new THREE.SphereGeometry( 5, 32, 20 );
+const esferaMaterial = new THREE.MeshBasicMaterial( { color: 0x5589f2 } );
+const esfera = new THREE.Mesh( esferaGeometry, esferaMaterial );
+scene.add( esfera );
+
+
 // translação do objeto
 piramide.translateX(40);
+esfera.translateX(23);
+
 // escala do objeto
 piramide.scale.set(10, 10, 10);
+esfera.scale.set(1.5, 1.5, 1.5);
+
 // rotação do objeto
 piramide.rotation.set(0, 1, 1);
+esfera.rotation.set(0, 1, 1);
+
+
 
 // Adição de luz à cena
 var light = new THREE.PointLight(0xFFFFFF);
