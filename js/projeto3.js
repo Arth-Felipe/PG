@@ -8,6 +8,11 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+// Adição de luz à cena
+var light = new THREE.PointLight(0xFFFFFF);
+light.position.set(-10, 15, 50);
+scene.add(light);
+
 // Criando o objeto do nó de torus (toro ou toróide)
 const torusGeometry = new THREE.TorusKnotGeometry( 10, 3, 31, 4, 6, 3 );
 const torusMaterial = new THREE.MeshPhongMaterial( { color: 0xff0080 } );
@@ -61,18 +66,11 @@ lathe.translateX(-25);
 lathe.translateZ(15);
 // escala do objeto lathe
 lathe.scale.set(1, 1.2, 1);
-// rotação do objeto lathe
-
 
 //Translação, rotação e escala do Retângulo
 retangulo.translateX(60)
 retangulo.scale.set(5, 5, 5);
 retangulo.rotation.set(1, 1, 0)
-
-// Adição de luz à cena
-var light = new THREE.PointLight(0xFFFFFF);
-light.position.set(-10, 15, 50);
-scene.add(light);
 
 // Função de animação do objeto
 function animate() {
