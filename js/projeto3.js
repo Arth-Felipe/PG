@@ -48,21 +48,21 @@ esfera.rotation.set(0, 1, 1);
 // Criando objeto Lathe
 const points = [];
 for ( let i = 0; i < 8; i ++ ) {
-	points.push(new THREE.Vector2( Math.sin( i * 0.8 ) * 1.2 + 5, ( i - 5 ) * 2 ));
+	points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 10 + 5, ( i - 5 ) * 2 ) );
 }
-const latheGeometry = new THREE.LatheGeometry(points);
-const latheMaterial = new THREE.MeshBasicMaterial( { color: 0x114719 } );
+const latheGeometry = new THREE.LatheGeometry(points, 5, 6, 6.3);
+const latheMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff } );
 // finalizando objeto e adicionando-o à cena
 const lathe = new THREE.Mesh(latheGeometry, latheMaterial);
 scene.add(lathe);
 
 // translação do objeto lathe
-lathe.translateX(-20);
-lathe.translateZ(25);
+lathe.translateX(-25);
+lathe.translateZ(15);
 // escala do objeto lathe
-lathe.scale.set(1.5, 2, 1);
+lathe.scale.set(1, 1.2, 1);
 // rotação do objeto lathe
-lathe.rotation.set(0, 1.2, 1);
+
 
 //Translação, rotação e escala do Retângulo
 retangulo.translateX(60)
