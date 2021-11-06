@@ -29,7 +29,7 @@ scene.add( esfera );
 
 //Criando retângulo
 const retanguloGeometry = new THREE.BoxGeometry( 1, 2, 1 );
-const retanguloMaterial = new THREE.MeshBasicMaterial( {color: 0x0dfffb} );
+const retanguloMaterial = new THREE.MeshPhongMaterial( {color: 0x0dfffb} );
 const retangulo = new THREE.Mesh( retanguloGeometry, retanguloMaterial );
 scene.add( retangulo );
 
