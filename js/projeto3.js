@@ -28,7 +28,7 @@ scene.add( piramide );
 
 //Criando o objeto círculo
 const esferaGeometry = new THREE.SphereGeometry( 5, 32, 20 );
-const esferaMaterial = new THREE.MeshBasicMaterial( { color: 0x5589f2 } );
+const esferaMaterial = new THREE.MeshPhongMaterial( { color: 0x5589f2 } );
 const esfera = new THREE.Mesh( esferaGeometry, esferaMaterial );
 scene.add( esfera );
 
