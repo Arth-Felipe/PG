@@ -45,11 +45,7 @@ for ( let i = 0; i < 8; i ++ ) {
 	points.push(new THREE.Vector2( Math.sin( i * 0.8 ) * 1.2 + 5, ( i - 5 ) * 2 ));
 }
 const latheGeometry = new THREE.LatheGeometry(points);
-const latheMaterial = new THREE.MeshPhongMaterial();
-// definindo objeto de textura
-const texture = new THREE.TextureLoader().load("./imgs/akatsuki.jpg");
-// adicionando à textura do objeto a configuração criada acima
-latheMaterial.map = texture
+const latheMaterial = new THREE.MeshBasicMaterial( { color: 0x114719 } );
 // finalizando objeto e adicionando-o à cena
 const lathe = new THREE.Mesh(latheGeometry, latheMaterial);
 scene.add(lathe);
