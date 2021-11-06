@@ -27,6 +27,12 @@ const esferaMaterial = new THREE.MeshBasicMaterial( { color: 0x5589f2 } );
 const esfera = new THREE.Mesh( esferaGeometry, esferaMaterial );
 scene.add( esfera );
 
+//Criando retângulo
+const retanguloGeometry = new THREE.BoxGeometry( 1, 2, 1 );
+const retanguloMaterial = new THREE.MeshBasicMaterial( {color: 0x0dfffb} );
+const retangulo = new THREE.Mesh( retanguloGeometry, retanguloMaterial );
+scene.add( retangulo );
+
 // translação do objeto
 piramide.translateX(40);
 esfera.translateX(23);
@@ -57,6 +63,11 @@ lathe.translateZ(25);
 lathe.scale.set(1.5, 2, 1);
 // rotação do objeto lathe
 lathe.rotation.set(0, 1.2, 1);
+
+//Translação, rotação e escala do Retângulo
+retangulo.translateX(60)
+retangulo.scale.set(5, 5, 5);
+retangulo.rotation.set(1, 1, 0)
 
 // Adição de luz à cena
 var light = new THREE.PointLight(0xFFFFFF);
