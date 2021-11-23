@@ -73,8 +73,61 @@ retangulo.scale.set(5, 5, 5);
 retangulo.rotation.set(1, 1, 0)
 
 // Função de animação do objeto
-function animate() {
-	requestAnimationFrame( animate );
-	renderer.render( scene, camera );
+function spinObject(obj) {
+	obj.rotation.x += 0.1;
+	obj.rotation.y += 0.01;
+	obj.rotation.z += 0.05;
 }
+
+function anim(obj, n, m) {
+	obj.position.x += n;
+	obj.position.y += m;
+  
+	if (obj.position.x > 1) {
+		obj.position.x -= 0.2;
+		n = 0;
+		m = 0.2;
+	}
+
+	if (obj.position.x < -1) {
+		obj.position.x = -1;
+		n = 0;
+		m = -0.2;
+	}
+
+	if (obj.position.y > 1) {
+		obj.position.y -= 0.2;
+		n = -0.2;
+		m = 0;
+	}
+
+	if (obj.position.y < -1) {
+		obj.position.y = -1;
+		n = 0.2;
+		m = 0;
+	}
+
+	if (obj.position.x < 1 && obj.position.y == -1) {
+		obj.position.y -= 0.2;
+		n = -0.2;
+		m = 0;
+	}
+	console.log('x: ', obj.position.x)
+	console.log('y: ', obj.position.y)
+	//spinObject(torusKnot);
+}
+
+function animate() {
+	flag = 1;
+	console.log('início animate()');
+	console.log('início anim esfera');
+	//anim(esfera, 0.1, -0.3);
+	console.log('fim anim esfera');
+	requestAnimationFrame(animate);
+	console.log('fim request animationFrame');
+
+	renderer.render( scene, camera );
+	console.log('fim request render');
+}
+
 animate();
