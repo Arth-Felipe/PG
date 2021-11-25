@@ -1,6 +1,8 @@
 import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js';
 import {GUI} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/libs/dat.gui.module.js';
 
+let x, y, z
+
 // Criando a cena e posicionando a câmera
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -70,10 +72,10 @@ const material = new THREE.MeshPhongMaterial( {color: 0xffffff} );
 const cilindro = new THREE.Mesh(geometry, material);
 scene.add(cilindro);
 
-// translação do objeto lathe
+// translação do objeto cilindro
 cilindro.translateX(-25);
 cilindro.translateZ(15);
-// escala do objeto lathe
+// escala do objeto cilindro
 cilindro.scale.set(1, 1.8, 1);
 
 //Translação, rotação e escala do Retângulo
@@ -82,11 +84,11 @@ retangulo.scale.set(5, 5, 5);
 retangulo.rotation.set(1, 1, 0)
 
 const gui = new GUI()
-const cubeFolder = gui.addFolder('Cilindro')
+const cubeFolder = gui.addFolder('Rotacionar Cilindro')
 cubeFolder.add(cilindro.rotation, 'x', 0, Math.PI * 2)
 cubeFolder.add(cilindro.rotation, 'z', 0, Math.PI * 2)
 cubeFolder.open()
-const cameraFolder = gui.addFolder('Camera')
+const cameraFolder = gui.addFolder('Zoom da Câmera')
 cameraFolder.add(camera.position, 'z', 20, 100)
 cameraFolder.open()
 
@@ -113,11 +115,19 @@ function moveObjectFoward(obj) {
 	}
 }
 
+function resizeObject(obj) {
+	obj.scale.x += 1;
+	if (obj.scale.x >= 50) {
+		obj.scale.x = obj.scale.x - 100;
+	}
+}
+
 function animate() {
 	requestAnimationFrame(animate);
 	spinObject(torusKnot);
 	moveObjectFoward(torusKnot);
 	moveObjectUp(esfera);
+	resizeObject(piramide)
 	renderer.render( scene, camera );
 }
 
