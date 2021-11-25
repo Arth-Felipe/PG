@@ -88,6 +88,7 @@ const cubeFolder = gui.addFolder('Rotacionar Cilindro')
 cubeFolder.add(cilindro.rotation, 'x', 0, Math.PI * 2)
 cubeFolder.add(cilindro.rotation, 'z', 0, Math.PI * 2)
 cubeFolder.open()
+
 const cameraFolder = gui.addFolder('Zoom da Câmera')
 cameraFolder.add(camera.position, 'z', 20, 100)
 cameraFolder.open()
@@ -122,12 +123,22 @@ function resizeObject(obj) {
 	}
 }
 
+function moveObjectOrbital(obj, t) {        
+    obj.rotation.x += 0.2;
+    obj.position.y = 20*Math.cos(t) + 0;
+    obj.position.z = 20*Math.sin(t) + 0; // These to strings make it work
+}
+
+var t = 0;
 function animate() {
 	requestAnimationFrame(animate);
 	spinObject(torusKnot);
 	moveObjectFoward(torusKnot);
 	moveObjectUp(esfera);
 	resizeObject(piramide)
+	
+	t += 0.01;  
+	moveObjectOrbital(retangulo, t)
 	renderer.render( scene, camera );
 }
 
