@@ -1,17 +1,30 @@
+import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js';
+
 // Criando a cena e posicionando a câmera
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.z = 50;
 
 // Renderizando
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setClearColor( 0x3d3c3c );
 document.body.appendChild( renderer.domElement );
+
+const controls = new OrbitControls(camera, renderer.domElement);
+camera.position.set( 0, 20, 100 );
+controls.update();
 
 // Adição de luz à cena
 var light = new THREE.PointLight(0xFFFFFF);
 light.position.set(-10, 15, 50);
 scene.add(light);
+
+var light2 = new THREE.PointLight(0xFFFFFF);
+light2.position.set(5, 40, -50);
+scene.add(light2);
+
+var ambientLight = new THREE.AmbientLight( 0xffffff, 0.1);
+scene.add(ambientLight);
 
 // Criando o objeto do nó de torus (toro ou toróide)
 const torusGeometry = new THREE.TorusKnotGeometry( 10, 3, 31, 4, 6, 3 );
@@ -50,22 +63,17 @@ esfera.scale.set(1.5, 1.5, 1.5);
 piramide.rotation.set(0, 1, 1);
 esfera.rotation.set(0, 1, 1);
 
-// Criando objeto Lathe
-const points = [];
-for ( let i = 0; i < 8; i ++ ) {
-	points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 10 + 5, ( i - 5 ) * 2 ) );
-}
-const latheGeometry = new THREE.LatheGeometry(points, 5, 6, 6.3);
-const latheMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff } );
-// finalizando objeto e adicionando-o à cena
-const lathe = new THREE.Mesh(latheGeometry, latheMaterial);
-scene.add(lathe);
+// Criando objeto cilindro
+const geometry = new THREE.CylinderGeometry( 10, 5, 20, 32 );
+const material = new THREE.MeshPhongMaterial( {color: 0xffffff} );
+const cilindro = new THREE.Mesh(geometry, material);
+scene.add(cilindro);
 
 // translação do objeto lathe
-lathe.translateX(-25);
-lathe.translateZ(15);
+cilindro.translateX(-25);
+cilindro.translateZ(15);
 // escala do objeto lathe
-lathe.scale.set(1, 1.2, 1);
+cilindro.scale.set(1, 1.8, 1);
 
 //Translação, rotação e escala do Retângulo
 retangulo.translateX(60)
@@ -79,55 +87,18 @@ function spinObject(obj) {
 	obj.rotation.z += 0.05;
 }
 
-function anim(obj, n, m) {
-	obj.position.x += n;
-	obj.position.y += m;
-  
-	if (obj.position.x > 1) {
-		obj.position.x -= 0.2;
-		n = 0;
-		m = 0.2;
-	}
+function moveObject(obj, reset) {
+	obj.position.y += 0.8;
 
-	if (obj.position.x < -1) {
-		obj.position.x = -1;
-		n = 0;
-		m = -0.2;
+	if (obj.position.y > 10) {
+		obj.position.y = reset;
 	}
-
-	if (obj.position.y > 1) {
-		obj.position.y -= 0.2;
-		n = -0.2;
-		m = 0;
-	}
-
-	if (obj.position.y < -1) {
-		obj.position.y = -1;
-		n = 0.2;
-		m = 0;
-	}
-
-	if (obj.position.x < 1 && obj.position.y == -1) {
-		obj.position.y -= 0.2;
-		n = -0.2;
-		m = 0;
-	}
-	console.log('x: ', obj.position.x)
-	console.log('y: ', obj.position.y)
-	//spinObject(torusKnot);
 }
 
 function animate() {
-	flag = 1;
-	console.log('início animate()');
-	console.log('início anim esfera');
-	//anim(esfera, 0.1, -0.3);
-	console.log('fim anim esfera');
 	requestAnimationFrame(animate);
-	console.log('fim request animationFrame');
-
+	spinObject(torusKnot)
 	renderer.render( scene, camera );
-	console.log('fim request render');
 }
 
 animate();
