@@ -1,4 +1,5 @@
 import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js';
+import {GUI} from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/libs/dat.gui.module.js';
 
 // Criando a cena e posicionando a câmera
 const scene = new THREE.Scene();
@@ -8,10 +9,10 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor( 0x3d3c3c );
-document.body.appendChild( renderer.domElement );
+document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-camera.position.set( 0, 20, 100 );
+camera.position.set(0, 20, 100);
 controls.update();
 
 // Adição de luz à cena
@@ -80,6 +81,15 @@ retangulo.translateX(60)
 retangulo.scale.set(5, 5, 5);
 retangulo.rotation.set(1, 1, 0)
 
+const gui = new GUI()
+const cubeFolder = gui.addFolder('Cilindro')
+cubeFolder.add(cilindro.rotation, 'x', 0, Math.PI * 2)
+cubeFolder.add(cilindro.rotation, 'z', 0, Math.PI * 2)
+cubeFolder.open()
+const cameraFolder = gui.addFolder('Camera')
+cameraFolder.add(camera.position, 'z', 20, 100)
+cameraFolder.open()
+
 // Função de animação do objeto
 function spinObject(obj) {
 	obj.rotation.x += 0.1;
@@ -87,17 +97,27 @@ function spinObject(obj) {
 	obj.rotation.z += 0.05;
 }
 
-function moveObject(obj, reset) {
-	obj.position.y += 0.8;
+function moveObjectUp(obj) {
+	obj.position.y += 0.8;	
 
-	if (obj.position.y > 10) {
-		obj.position.y = reset;
+	if (obj.position.y >= 40) {
+		obj.position.y = obj.position.y - 35;
+	}
+}
+
+function moveObjectFoward(obj) {
+	obj.position.z += 0.8;
+
+	if (obj.position.z >= 40) {
+		obj.position.z = obj.position.y - 35;
 	}
 }
 
 function animate() {
 	requestAnimationFrame(animate);
-	spinObject(torusKnot)
+	spinObject(torusKnot);
+	moveObjectFoward(torusKnot);
+	moveObjectUp(esfera);
 	renderer.render( scene, camera );
 }
 
