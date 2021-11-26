@@ -4,6 +4,7 @@ import Stats from 'https://threejsfundamentals.org/threejs/resources/threejs/r12
 let stats, scene, renderer, windowWidth, windowHeight
 let mouseX = 0, mouseY = 0;
 
+//Definindo objetos
 const geometry = new THREE.CylinderGeometry( 10, 5, 20, 32 );
 const material = new THREE.MeshPhongMaterial( {color: 0xffffff} );
 const cilindro = new THREE.Mesh(geometry, material);
@@ -24,6 +25,7 @@ const retanguloGeometry = new THREE.BoxGeometry( 1, 2, 1 );
 const retanguloMaterial = new THREE.MeshPhongMaterial( {color: 0x0dfffb} );
 const retangulo = new THREE.Mesh( retanguloGeometry, retanguloMaterial );
 
+//Definindo as 3 visões
 const views = [
 	{
 		left: 0,
@@ -81,8 +83,6 @@ for ( let ii = 0; ii < views.length; ++ ii ) {
 	view.camera = camera;
 }
 
-
-
 scene = new THREE.Scene();
 
 // Adição de luz à cena
@@ -97,52 +97,34 @@ scene.add(light2);
 var ambientLight = new THREE.AmbientLight( 0xffffff, 0.1);
 scene.add(ambientLight);
 
-async function iniciando(){
-// Criando o objeto do nó de torus (toro ou toróide)
+function iniciando(){
 
-torusKnot.rotation.set(0.3, 2.9, 0);
+// Adicionando os objetos em cena
 scene.add( torusKnot );
-
-// Criando o objeto pirâmide
-
 scene.add( piramide );
-
-//Criando o objeto círculo
-
 scene.add( esfera );
-
-//Criando retângulo
-
 scene.add( retangulo );
-// translação do objeto
-piramide.translateX(40);
-esfera.translateX(23);
-
-// escala do objeto
-piramide.scale.set(10, 10, 10);
-esfera.scale.set(1.5, 1.5, 1.5);
-
-// rotação do objeto
-piramide.rotation.set(0, 1, 1);
-esfera.rotation.set(0, 1, 1);
-
-// Criando objeto cilindro
-
 scene.add(cilindro);
 
-// translação do objeto cilindro
+// translação dos objetos
+piramide.translateX(40);
+esfera.translateX(23);
 cilindro.translateX(-25);
 cilindro.translateZ(15);
-// escala do objeto cilindro
-cilindro.scale.set(1, 1.8, 1);
-
-//Translação, rotação e escala do Retângulo
 retangulo.translateX(60)
+
+// escala dos objetos
+piramide.scale.set(10, 10, 10);
+esfera.scale.set(1.5, 1.5, 1.5);
+cilindro.scale.set(1, 1.8, 1);
 retangulo.scale.set(5, 5, 5);
-retangulo.rotation.set(1, 1, 0)
+
+// rotação dos objetos
+torusKnot.rotation.set(0.3, 2.9, 0);
+piramide.rotation.set(0, 1, 1);
+esfera.rotation.set(0, 1, 1);
+retangulo.rotation.set(1, 1, 0);
 }
-
-
 
 renderer = new THREE.WebGLRenderer( {antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -216,7 +198,8 @@ function render() {
 	}
 }
 
-async function animate(){
+function animate(){
+	//Renderizando e realizando os movimentos
 	render();
 	stats.update();
 	requestAnimationFrame(animate);
@@ -228,7 +211,7 @@ async function animate(){
 }
 
 
-await iniciando();
+iniciando();
 animate()
-// animate(torusKnot, esfera, piramide, retangulo);
+
 teste();
