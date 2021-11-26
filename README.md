@@ -21,5 +21,5 @@ Todo o projeto foi construído a partir da biblioteca gráfica [three.js](https:
 ## Execução
 Mesmo se utilizando de objetos criados manualmente a partir da biblioteca gráfica, o repositório com o projeto foi hospedado na Vercel [...]. Para visualizar nosso projeto, siga os passos a baixo:
 
-   ~~* clone o repositório, seja baixando o ```.zip``` (e descompactando-o) ou através de ```git clone```;
-   ~* abra o arquivo ```index.html``` em seu navegador, por meio de duplo clique sobre ele ou arrastando-o até a janela do navegador.
+   ~* clone o repositório, seja baixando o ```.zip``` (e descompactando-o) ou através de ```git clone```;~
+   ~* abra o arquivo ```index.html``` em seu navegador, por meio de duplo clique sobre ele ou arrastando-o até a janela do navegador.~
