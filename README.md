@@ -1,4 +1,4 @@
-# Processamento Gráfico - Projeto 3
+# Processamento Gráfico - Projeto 4
 
 Integrantes do grupo:
 * Arthur Felipe
