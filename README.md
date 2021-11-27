@@ -19,7 +19,6 @@ Todo o projeto foi construído a partir da biblioteca gráfica [three.js](https:
 * Neste meio tempo, as configurações de câmeras causaram a quebra dos códigos de movimento dos objetos (citados anteriormente no primeiro tópico). Após análise e respectiva remediação (separação em etapas de definição dos objetos, definição das visões e, por fim, inicialização da cena), o código foi ajustado para ser possível visualizar os movimentos corrigidos a partir de 3 pontos de vista diferentes
 
 ## Execução
-Mesmo se utilizando de objetos criados manualmente a partir da biblioteca gráfica, o repositório com o projeto foi hospedado na Vercel [...]. Para visualizar nosso projeto, siga os passos a baixo:
+Mesmo se utilizando de objetos criados manualmente a partir da biblioteca gráfica, o repositório com o projeto foi hospedado na Vercel, uma foram de hospedagem gratuita com o domínio (link) gerado automaticamente. Assim, para vizualizar o nosso projeto basta clicar no seguinte link: https://pg-parte4.vercel.app/
 
-   ~* clone o repositório, seja baixando o ```.zip``` (e descompactando-o) ou através de ```git clone```;~
-   ~* abra o arquivo ```index.html``` em seu navegador, por meio de duplo clique sobre ele ou arrastando-o até a janela do navegador.~
+Fim :D
