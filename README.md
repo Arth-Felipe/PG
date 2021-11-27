@@ -21,4 +21,6 @@ Todo o projeto foi construído a partir da biblioteca gráfica [three.js](https:
 ## Execução
 Mesmo se utilizando de objetos criados manualmente a partir da biblioteca gráfica, o repositório com o projeto foi hospedado na Vercel, uma foram de hospedagem gratuita com o domínio (link) gerado automaticamente. Assim, para vizualizar o nosso projeto basta clicar no seguinte link: https://pg-parte4.vercel.app/
 
+_PS: a interação com o mesmo se dá através da movimentação do mouse para a extrema esquerda e extrema direita_
+
 Fim :D
